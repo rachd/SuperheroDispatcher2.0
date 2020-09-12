@@ -19,6 +19,10 @@ config/name="SuperheroDispatcher2.0"
 run/main_scene="res://HeroSelection.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+constants="*res://constants.gd"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

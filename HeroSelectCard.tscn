@@ -24,19 +24,19 @@ margin_right = 1024.0
 margin_bottom = 126.0
 text = "Hero Name"
 
-[node name="Label" type="Label" parent="."]
+[node name="Speed" type="Label" parent="."]
 margin_top = 130.0
 margin_right = 1024.0
 margin_bottom = 144.0
 text = "Speed"
 
-[node name="Label2" type="Label" parent="."]
+[node name="Health" type="Label" parent="."]
 margin_top = 148.0
 margin_right = 1024.0
 margin_bottom = 162.0
 text = "Health"
 
-[node name="Label3" type="Label" parent="."]
+[node name="Attack" type="Label" parent="."]
 margin_top = 166.0
 margin_right = 1024.0
 margin_bottom = 180.0
