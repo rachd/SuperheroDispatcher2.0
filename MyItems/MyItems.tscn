@@ -6,6 +6,7 @@
 [node name="MyItems" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -38,7 +39,7 @@ margin_bottom = 20.0
 text = "Start Next Day"
 
 [node name="Content" type="HBoxContainer" parent="."]
-margin_top = 24.0
+margin_top = 40.0
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_vertical = 3
@@ -47,13 +48,13 @@ custom_constants/separation = 40
 [node name="ItemList" parent="Content" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 188.0
-margin_bottom = 576.0
+margin_right = 137.0
+margin_bottom = 560.0
 
 [node name="Heros" parent="Content" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 228.0
+margin_left = 177.0
 margin_right = 1024.0
-margin_bottom = 576.0
+margin_bottom = 560.0
 size_flags_horizontal = 3

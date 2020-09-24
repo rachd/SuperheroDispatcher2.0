@@ -103,3 +103,9 @@ static func get_items():
 		"price": 1400
 	}
 	]
+	
+static func get_item_by_id(itemId):
+	var items = get_items()
+	for item in items:
+		if item.id == itemId:
+			return item

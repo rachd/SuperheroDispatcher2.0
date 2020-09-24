@@ -1,10 +1,14 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://MyItems/ItemRow.tscn" type="PackedScene" id=1]
+[ext_resource path="res://MyItems/ItemList.gd" type="Script" id=2]
 
 [node name="ItemList" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 margin_right = 1024.0
@@ -37,29 +41,7 @@ margin_bottom = 600.0
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 188.0
-margin_bottom = 200.0
+[node name="ItemRowContainer" type="VBoxContainer" parent="ScrollContainer"]
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="ItemRow" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 188.0
-margin_bottom = 64.0
-
-[node name="ItemRow3" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 68.0
-margin_right = 188.0
-margin_bottom = 132.0
-
-[node name="ItemRow2" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 136.0
-margin_right = 188.0
-margin_bottom = 200.0
