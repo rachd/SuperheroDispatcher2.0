@@ -16,12 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="SuperheroDispatcher2.0"
-run/main_scene="res://HeroSelection.tscn"
+run/main_scene="res://MyItems/MyItems.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 constants="*res://constants.gd"
+gameVariables="*res://gameVariables.gd"
 
 [rendering]
 
