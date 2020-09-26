@@ -33,8 +33,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="HBoxContainer"]
-visible = false
+[node name="EquipButton" type="Button" parent="HBoxContainer"]
 margin_left = 141.0
 margin_top = 22.0
 margin_right = 188.0
@@ -63,3 +62,4 @@ margin_right = 137.0
 margin_bottom = 168.0
 text = "Item Description"
 [connection signal="gui_input" from="." to="." method="_on_ItemRow_gui_input"]
+[connection signal="pressed" from="HBoxContainer/EquipButton" to="." method="_on_EquipButton_pressed"]

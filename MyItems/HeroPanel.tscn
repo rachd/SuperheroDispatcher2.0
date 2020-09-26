@@ -2,7 +2,7 @@
 
 [ext_resource path="res://MyItems/HeroPanel.gd" type="Script" id=1]
 
-[node name="HeroPanel" type="Control"]
+[node name="HeroPanel" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -10,7 +10,75 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 70.0
+margin_bottom = 600.0
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+margin_right = 70.0
 margin_bottom = 14.0
 text = "Hero Panel"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 70.0
+margin_bottom = 68.0
+columns = 2
+
+[node name="HealthLabel" type="Label" parent="VBoxContainer/GridContainer"]
+margin_right = 42.0
+margin_bottom = 14.0
+text = "Health"
+
+[node name="HealthValue" type="Label" parent="VBoxContainer/GridContainer"]
+margin_left = 46.0
+margin_right = 46.0
+margin_bottom = 14.0
+
+[node name="SpeedLabel" type="Label" parent="VBoxContainer/GridContainer"]
+margin_top = 18.0
+margin_right = 42.0
+margin_bottom = 32.0
+text = "Speed"
+
+[node name="SpeedValue" type="Label" parent="VBoxContainer/GridContainer"]
+margin_left = 46.0
+margin_top = 18.0
+margin_right = 46.0
+margin_bottom = 32.0
+
+[node name="AttackLabel" type="Label" parent="VBoxContainer/GridContainer"]
+margin_top = 36.0
+margin_right = 42.0
+margin_bottom = 50.0
+text = "Attack"
+
+[node name="AttackValue" type="Label" parent="VBoxContainer/GridContainer"]
+margin_left = 46.0
+margin_top = 36.0
+margin_right = 46.0
+margin_bottom = 50.0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 74.0
+margin_right = 74.0
+margin_bottom = 600.0
+
+[node name="HeadSlot" type="Label" parent="GridContainer"]
+margin_bottom = 14.0
+
+[node name="LeftHandSlot" type="Label" parent="GridContainer"]
+margin_top = 18.0
+margin_bottom = 32.0
+
+[node name="RightHandSlot" type="Label" parent="GridContainer"]
+margin_top = 36.0
+margin_bottom = 50.0
+
+[node name="BodySlot" type="Label" parent="GridContainer"]
+margin_top = 54.0
+margin_bottom = 68.0
+
+[node name="FootSlot" type="Label" parent="GridContainer"]
+margin_top = 72.0
+margin_bottom = 86.0
