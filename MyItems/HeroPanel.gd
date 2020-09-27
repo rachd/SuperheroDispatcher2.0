@@ -1,20 +1,17 @@
 extends HBoxContainer
 
-var current_hero
-
 func show_hero(heroId):
 	var hero_info = constants.get_hero_stats()[heroId]
-	current_hero = heroId
 	$VBoxContainer/NameLabel.text = hero_info.name
 	$VBoxContainer/GridContainer/HealthValue.text = str(hero_info.health)
 	$VBoxContainer/GridContainer/SpeedValue.text = str(hero_info.speed)
 	$VBoxContainer/GridContainer/AttackValue.text = str(hero_info.attack)
-	display_items()
+	display_items(heroId)
 			
-func display_items():
+func display_items(heroId):
 	var hero_items = {} 
-	if gameVariables.assigned_items.has(current_hero):
-		hero_items = gameVariables.assigned_items[current_hero]
+	if gameVariables.assigned_items.has(heroId):
+		hero_items = gameVariables.assigned_items[heroId]
 	if hero_items.has("head"):
 		var item_in_slot = constants.get_item_by_id(hero_items["head"])
 		$GridContainer/HeadSlot.text = item_in_slot.title

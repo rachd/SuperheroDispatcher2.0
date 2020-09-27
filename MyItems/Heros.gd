@@ -1,26 +1,25 @@
 extends VBoxContainer
 
+signal hero_tab_changed(heroId)
+
 var hero_tab_scene = preload("res://MyItems/HeroTab.tscn")
 var selected_hero_id
 
 func _ready():
+	self.connect("hero_tab_changed", get_node("/root/MyItems"), "_on_Hero_tab_selected")
 	for selected_hero in gameVariables.selected_heros:
 		var tab = hero_tab_scene.instance()
 		tab.set_hero(selected_hero)
 		$HeroTabs.add_child(tab)
-	selected_hero_id = gameVariables.selected_heros[0]
+	_handle_hero_change(gameVariables.selected_heros[0])
+	
+func _handle_hero_change(heroId):
+	selected_hero_id = heroId
 	$HeroPanel.show_hero(selected_hero_id)
+	emit_signal("hero_tab_changed", heroId)
 
 func _on_Hero_tab_selected(heroId):
-	selected_hero_id = heroId
-	$HeroPanel.show_hero(heroId)
+	_handle_hero_change(heroId)
 
-func _on_item_equipped(itemId, itemType):
-	if gameVariables.assigned_items.has(selected_hero_id):
-		if gameVariables.assigned_items[selected_hero_id].has(itemType):
-			#trigger deselect event for prior item
-			pass	
-		gameVariables.assigned_items[selected_hero_id][itemType] = itemId
-	else:
-		gameVariables.assigned_items[selected_hero_id] = {itemType: itemId}
-	$HeroPanel.display_items()
+func on_item_equipped():
+	$HeroPanel.display_items(selected_hero_id)
