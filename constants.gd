@@ -51,55 +51,55 @@ static func get_items():
 	{
 		"id": 3,
 		"title": "test 2",
-		"type": "foot",
+		"type": "head",
 		"price": 1000
 	},
 	{
 		"id": 4,
 		"title": "test3",
-		"type": "foot",
+		"type": "head",
 		"price": 600
 	},
 	{
 		"id": 5,
 		"title": "test4",
-		"type": "foot",
+		"type": "leftHand",
 		"price": 1400
 	},
 	{
 		"id": 6,
 		"title": "test5",
-		"type": "foot",
+		"type": "rightHand",
 		"price": 1400
 	},
 	{
 		"id": 7,
 		"title": "test6",
-		"type": "foot",
+		"type": "body",
 		"price": 1400
 	},
 	{
 		"id": 8,
 		"title": "test7",
-		"type": "foot",
+		"type": "body",
 		"price": 1400
 	},
 	{
 		"id": 9,
 		"title": "test8",
-		"type": "foot",
+		"type": "body",
 		"price": 1400
 	},
 	{
 		"id": 10,
 		"title": "test9",
-		"type": "foot",
+		"type": "rightHand",
 		"price": 1400
 	},
 	{
 		"id": 11,
 		"title": "test10",
-		"type": "foot",
+		"type": "head",
 		"price": 1400
 	}
 	]
@@ -109,3 +109,4 @@ static func get_item_by_id(itemId):
 	for item in items:
 		if item.id == itemId:
 			return item
+			

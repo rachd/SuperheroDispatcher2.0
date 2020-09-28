@@ -38,6 +38,11 @@ func _deselect_row():
 	$TypeLabel.hide()
 	is_selected = false
 	
+func hide_if_type(itemType):
+	if item_type == itemType:
+		show()
+	else:
+		hide()
 	
 func _ready():
 	self.connect("equip_item", get_node("/root/MyItems"), "_on_item_equipped")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://MyItems/FilterDropdown.gd" type="Script" id=1]
 [ext_resource path="res://MyItems/ItemList.gd" type="Script" id=2]
 
 [node name="ItemList" type="VBoxContainer"]
@@ -22,13 +23,14 @@ margin_right = 1024.0
 margin_bottom = 38.0
 alignment = 1
 
-[node name="Filter" type="OptionButton" parent="HBoxContainer"]
+[node name="FilterDropdown" type="OptionButton" parent="HBoxContainer"]
 margin_left = 452.0
 margin_right = 514.0
 margin_bottom = 20.0
 text = "Filter"
+script = ExtResource( 1 )
 
-[node name="Sort" type="OptionButton" parent="HBoxContainer"]
+[node name="SortDropdown" type="OptionButton" parent="HBoxContainer"]
 margin_left = 518.0
 margin_right = 572.0
 margin_bottom = 20.0
@@ -45,3 +47,4 @@ scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="item_selected" from="HBoxContainer/FilterDropdown" to="HBoxContainer/FilterDropdown" method="_on_FilterDropdown_item_selected"]

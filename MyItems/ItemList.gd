@@ -37,3 +37,20 @@ func equip_item(itemId, heroId):
 func unequip_item(itemId):
 	item_rows[itemId].set_unequipped()
 	item_rows[itemId].set_assigned_hero("")
+	
+func _show_all_items():
+	for item_row in item_rows.values():
+		item_row.show()
+		
+func _filter_by_type(itemType):
+	for item_row in item_rows.values():
+		item_row.hide_if_type(itemType)
+
+func _show_unequipped_items():
+	_show_all_items()
+	var assigned_items = []
+	for hero in gameVariables.assigned_items.keys():
+		assigned_items += gameVariables.assigned_items[hero].values()
+	for item_id in gameVariables.owned_item_ids:
+		if item_id in assigned_items:
+			item_rows[item_id].hide()
