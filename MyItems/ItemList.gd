@@ -38,6 +38,10 @@ func unequip_item(itemId):
 	item_rows[itemId].set_unequipped()
 	item_rows[itemId].set_assigned_hero("")
 	
+func remove_item(itemId):
+	item_rows[itemId].queue_free()
+	item_rows.erase(itemId)
+	
 func _show_all_items():
 	for item_row in item_rows.values():
 		item_row.show()

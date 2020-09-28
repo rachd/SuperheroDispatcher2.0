@@ -23,3 +23,6 @@ func _on_Hero_tab_selected(heroId):
 
 func on_item_equipped():
 	$HeroPanel.display_items(selected_hero_id)
+	
+func remove_item():
+	_handle_hero_change(selected_hero_id)

@@ -29,3 +29,13 @@ func _on_item_equipped(itemId, itemType):
 		gameVariables.assigned_items[selected_hero_id] = {itemType: itemId}
 		handle_equip(itemId, hero_name, itemType)
 	$Content/Heros.on_item_equipped()
+	
+func _on_item_sold(itemId):
+	var item = constants.get_item_by_id(itemId)
+	gameVariables.budget += item.salePrice
+	gameVariables.owned_item_ids.erase(itemId)
+	for hero in gameVariables.assigned_items:
+		if gameVariables.assigned_items[hero].has(item.type) and gameVariables.assigned_items[hero][item.type] == itemId:
+			gameVariables.assigned_items[hero].erase(item.type)
+	$Content/ItemList.remove_item(itemId)
+	$Content/Heros.remove_item()

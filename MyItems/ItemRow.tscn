@@ -52,6 +52,14 @@ margin_bottom = 42.0
 size_flags_vertical = 4
 text = "Equip"
 
+[node name="SellButton" type="Button" parent="HBoxContainer"]
+margin_left = 192.0
+margin_top = 22.0
+margin_right = 227.0
+margin_bottom = 42.0
+size_flags_vertical = 4
+text = "Sell"
+
 [node name="TypeLabel" type="Label" parent="."]
 visible = false
 margin_top = 68.0
@@ -72,5 +80,12 @@ margin_top = 154.0
 margin_right = 137.0
 margin_bottom = 168.0
 text = "Item Description"
+
+[node name="SalePriceLabel" type="Label" parent="."]
+visible = false
+margin_top = 68.0
+margin_right = 1024.0
+margin_bottom = 82.0
 [connection signal="gui_input" from="." to="." method="_on_ItemRow_gui_input"]
 [connection signal="pressed" from="HBoxContainer/EquipButton" to="." method="_on_EquipButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/SellButton" to="." method="_on_SellButton_pressed"]
