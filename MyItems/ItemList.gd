@@ -9,6 +9,14 @@ func _ready():
 		item_row.initialize(owned_item_id)
 		$ScrollContainer/ItemRowContainer.add_child(item_row)
 		item_rows[owned_item_id] = item_row
+		_initialize_assignments()
+
+func _initialize_assignments():
+	var assigned_items = gameVariables.assigned_items
+	for hero_id in assigned_items:
+		var hero_name = constants.get_hero_stats()[hero_id].name
+		for item_id in assigned_items[hero_id].values():
+			item_rows[item_id].set_assigned_hero(hero_name)
 
 func on_hero_tab_selected(heroId):
 	if gameVariables.assigned_items.has(heroId):
@@ -22,8 +30,10 @@ func on_hero_tab_selected(heroId):
 		for item_row in item_rows.values():
 			item_row.set_unequipped()
 
-func equip_item(itemId):
+func equip_item(itemId, heroId):
 	item_rows[itemId].set_equipped()
+	item_rows[itemId].set_assigned_hero(heroId)
 
 func unequip_item(itemId):
 	item_rows[itemId].set_unequipped()
+	item_rows[itemId].set_assigned_hero("")

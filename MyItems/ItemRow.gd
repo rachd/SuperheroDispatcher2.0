@@ -11,8 +11,12 @@ func initialize(itemId):
 	var item = constants.get_item_by_id(itemId)
 	item_id = item.id
 	item_type = item.type
-	$HBoxContainer/TitleLabel.text = item.title;
+	$HBoxContainer/VBoxContainer/TitleLabel.text = item.title;
 	$TypeLabel.text = item.type
+	$HBoxContainer/VBoxContainer/HeroLabel.text = ""
+	
+func set_assigned_hero(hero_name):
+	$HBoxContainer/VBoxContainer/HeroLabel.text = hero_name;
 	
 func set_unequipped():
 	is_equipped = false
