@@ -3,16 +3,14 @@ extends Control
 signal start_next_day(budget)
 
 var rng = RandomNumberGenerator.new()
-var item_card_scene = preload("res://ShopCard.tscn")
+var item_card_scene = preload("res://Store/ShopCard.tscn")
 
 var items = []
-var budget = 0
 
 var MAX_ITEMS = 6
 
 func set_budget(b):
-	budget = b
-	$VBoxContainer/BudgetLabel.text = "Budget: $" + str(budget)
+	$VBoxContainer/HBoxContainer/VBoxContainer/BudgetLabel.text = "Budget: $" + str(b)
 	
 func reset():
 	self.queue_free()
@@ -30,34 +28,48 @@ func _select_items(num_to_select):
 			item_index = rng.randi_range(0, all_items.size()-1)
 			item_id = all_items[item_index].id
 		selected_item_ids.append(item_id)
-	for item in all_items:
-		if selected_item_ids.has(item.id):
-			items.append(item)
+		items.append(constants.get_item_by_id(item_id))
+		gameVariables.current_shop[item_id] = true
 
-func _add_item_cards():
+func _add_item_cards(disabledItems):
 	var shop_cards = $VBoxContainer/MarginContainer/ItemContainer.get_children()
 	for i in range(0, shop_cards.size()):
 		shop_cards[i].set_data(items[i])
+		if items[i].id in disabledItems:
+			shop_cards[i].disable()
 		
 func _on_item_bought(item, item_card):
-	if item.price <= budget:
-		gameVariables.unassigned_items.append(item)
+	if item.price <= gameVariables.budget:
 		gameVariables.owned_item_ids.append(item.id)
-		budget -= item.price
-		set_budget(budget)
+		gameVariables.budget -= item.price
+		set_budget(gameVariables.budget)
 		item_card.disable()
+		gameVariables.current_shop[item.id] = false
 	
 func _on_item_saved(item):
 	gameVariables.saved_items.append(item)
 	
 func _ready():
 	#self.connect("start_next_day", get_node("/root/Main"), "_on_close_Store")
-	rng.randomize()
-	set_budget(10000)
-	items = gameVariables.saved_items
-	gameVariables.saved_items = []
-	self._select_items(MAX_ITEMS - items.size())
-	self._add_item_cards()
-
+	var disabled_items = []
+	set_budget(gameVariables.budget)
+	if gameVariables.show_new_shop:
+		rng.randomize()
+		items = gameVariables.saved_items
+		gameVariables.saved_items = []
+		self._select_items(MAX_ITEMS - items.size())
+	else:
+		var item_ids = gameVariables.current_shop.keys()
+		for item_id in item_ids:
+			items.append(constants.get_item_by_id(item_id))
+			if gameVariables.current_shop[item_id] == false:
+				disabled_items.append(item_id)
+	self._add_item_cards(disabled_items)
+	gameVariables.show_new_shop = false
+	
 #func _on_Done_pressed():
 	#emit_signal("start_next_day", budget)
+
+
+func _on_MyItemsButton_pressed():
+	get_tree().change_scene("res://MyItems/MyItems.tscn")

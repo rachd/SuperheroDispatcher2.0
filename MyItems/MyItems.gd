@@ -39,3 +39,7 @@ func _on_item_sold(itemId):
 			gameVariables.assigned_items[hero].erase(item.type)
 	$Content/ItemList.remove_item(itemId)
 	$Content/Heros.remove_item()
+
+
+func _on_StoreButton_pressed():
+	get_tree().change_scene("res://Store/Store.tscn")

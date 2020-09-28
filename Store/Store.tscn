@@ -1,12 +1,15 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Store.gd" type="Script" id=1]
-[ext_resource path="res://ShopCard.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Store/Store.gd" type="Script" id=1]
+[ext_resource path="res://Store/ShopCard.tscn" type="PackedScene" id=2]
 
 [node name="Store" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -16,23 +19,51 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 1024.0
+margin_bottom = 32.0
+
+[node name="MyItemsButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_top = 6.0
+margin_right = 73.0
+margin_bottom = 26.0
+size_flags_vertical = 4
+text = "My Items"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 77.0
+margin_right = 917.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 840.0
 margin_bottom = 14.0
 text = "Store"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="BudgetLabel" type="Label" parent="VBoxContainer"]
-margin_top = 14.0
-margin_right = 1024.0
-margin_bottom = 28.0
+[node name="BudgetLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 840.0
+margin_bottom = 32.0
 text = "Current Budget: "
 align = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 28.0
+[node name="DoneButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 921.0
+margin_top = 6.0
 margin_right = 1024.0
-margin_bottom = 440.0
+margin_bottom = 26.0
+size_flags_vertical = 4
+text = "Start Next Day"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 32.0
+margin_right = 1024.0
+margin_bottom = 444.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
@@ -107,3 +138,4 @@ margin_bottom = 372.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
 alignment = 1
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MyItemsButton" to="." method="_on_MyItemsButton_pressed"]
