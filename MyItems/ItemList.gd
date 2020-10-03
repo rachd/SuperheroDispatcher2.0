@@ -3,13 +3,16 @@ extends VBoxContainer
 var item_row_scene = preload("res://MyItems/ItemRow.tscn")
 var item_rows = {}
 
-func _ready():
+func _render_items():
 	for owned_item_id in gameVariables.owned_item_ids:
 		var item_row = item_row_scene.instance()
 		item_row.initialize(owned_item_id)
 		$ScrollContainer/ItemRowContainer.add_child(item_row)
 		item_rows[owned_item_id] = item_row
 		_initialize_assignments()
+		
+func _ready():
+	_render_items()
 
 func _initialize_assignments():
 	var assigned_items = gameVariables.assigned_items
@@ -58,3 +61,9 @@ func _show_unequipped_items():
 	for item_id in gameVariables.owned_item_ids:
 		if item_id in assigned_items:
 			item_rows[item_id].hide()
+			
+func _on_items_sorted():
+	for item_row in item_rows.values():
+		item_row.queue_free()
+	_render_items()
+			

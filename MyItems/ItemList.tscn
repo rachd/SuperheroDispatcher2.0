@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://MyItems/FilterDropdown.gd" type="Script" id=1]
-[ext_resource path="res://MyItems/ItemList.gd" type="Script" id=2]
+[ext_resource path="res://MyItems/ItemList.gd" type="Script" id=1]
+[ext_resource path="res://MyItems/FilterDropdown.gd" type="Script" id=2]
+[ext_resource path="res://MyItems/SortDropdown.gd" type="Script" id=3]
 
 [node name="ItemList" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -24,17 +25,18 @@ margin_bottom = 38.0
 alignment = 1
 
 [node name="FilterDropdown" type="OptionButton" parent="HBoxContainer"]
-margin_left = 452.0
+margin_left = 440.0
 margin_right = 514.0
 margin_bottom = 20.0
 text = "Filter"
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="SortDropdown" type="OptionButton" parent="HBoxContainer"]
 margin_left = 518.0
-margin_right = 572.0
+margin_right = 584.0
 margin_bottom = 20.0
 text = "Sort"
+script = ExtResource( 3 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_top = 42.0
@@ -48,3 +50,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="item_selected" from="HBoxContainer/FilterDropdown" to="HBoxContainer/FilterDropdown" method="_on_FilterDropdown_item_selected"]
+[connection signal="item_selected" from="HBoxContainer/SortDropdown" to="HBoxContainer/SortDropdown" method="_on_SortDropdown_item_selected"]
