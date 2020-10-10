@@ -21,25 +21,31 @@ align = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_top = 18.0
 margin_right = 1024.0
-margin_bottom = 38.0
+margin_bottom = 42.0
 alignment = 1
 
 [node name="FilterDropdown" type="OptionButton" parent="HBoxContainer"]
-margin_left = 440.0
-margin_right = 514.0
-margin_bottom = 20.0
+margin_left = 399.0
+margin_right = 461.0
+margin_bottom = 24.0
 text = "Filter"
 script = ExtResource( 2 )
 
 [node name="SortDropdown" type="OptionButton" parent="HBoxContainer"]
-margin_left = 518.0
-margin_right = 584.0
-margin_bottom = 20.0
+margin_left = 465.0
+margin_right = 519.0
+margin_bottom = 24.0
 text = "Sort"
 script = ExtResource( 3 )
 
+[node name="UnequppedCheckBox" type="CheckBox" parent="HBoxContainer"]
+margin_left = 523.0
+margin_right = 625.0
+margin_bottom = 24.0
+text = "Unequpped"
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_top = 42.0
+margin_top = 46.0
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_vertical = 3
@@ -51,3 +57,4 @@ __meta__ = {
 }
 [connection signal="item_selected" from="HBoxContainer/FilterDropdown" to="HBoxContainer/FilterDropdown" method="_on_FilterDropdown_item_selected"]
 [connection signal="item_selected" from="HBoxContainer/SortDropdown" to="HBoxContainer/SortDropdown" method="_on_SortDropdown_item_selected"]
+[connection signal="toggled" from="HBoxContainer/UnequppedCheckBox" to="." method="_on_UnequppedCheckBox_toggled"]
