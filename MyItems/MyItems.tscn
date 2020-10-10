@@ -50,13 +50,13 @@ custom_constants/separation = 40
 [node name="ItemList" parent="Content" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 120.0
+margin_right = 226.0
 margin_bottom = 560.0
 
 [node name="Heros" parent="Content" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 160.0
+margin_left = 266.0
 margin_right = 1024.0
 margin_bottom = 560.0
 size_flags_horizontal = 3

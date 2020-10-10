@@ -12,6 +12,10 @@ func _render_items():
 		$ScrollContainer/ItemRowContainer.add_child(item_row)
 		item_rows[owned_item_id] = item_row
 		_initialize_assignments()
+		if current_filter:
+			_filter_by_type(current_filter)
+		elif !show_equipped:
+			_hide_equipped()
 		
 func _ready():
 	_render_items()

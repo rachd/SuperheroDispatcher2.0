@@ -35,7 +35,7 @@ static func get_items():
 		"title": "really nice running sneakers",
 		"type": "foot",
 		"price": 80,
-		"salePrice": 40
+		"salePrice": 405
 	},
 	{
 		"id": 1,
