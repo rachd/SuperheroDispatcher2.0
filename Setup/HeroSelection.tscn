@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://HeroSelection.gd" type="Script" id=1]
-[ext_resource path="res://HeroSelectCard.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Setup/HeroSelection.gd" type="Script" id=1]
+[ext_resource path="res://Setup/HeroSelectCard.tscn" type="PackedScene" id=2]
 
 [node name="HeroSelection" type="Control"]
 anchor_right = 1.0

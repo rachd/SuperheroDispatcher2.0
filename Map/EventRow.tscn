@@ -1,0 +1,25 @@
+[gd_scene format=2]
+
+[node name="EventRow" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionLabel" type="Label" parent="."]
+margin_top = 293.0
+margin_right = 811.0
+margin_bottom = 307.0
+size_flags_horizontal = 3
+text = "Description of what event occurred"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EntityLabel" type="Label" parent="."]
+margin_left = 815.0
+margin_top = 293.0
+margin_right = 1024.0
+margin_bottom = 307.0
+text = "Hero, villain, or amount involved"
