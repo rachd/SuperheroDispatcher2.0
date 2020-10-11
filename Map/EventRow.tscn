@@ -1,8 +1,11 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Map/EventRow.gd" type="Script" id=1]
 
 [node name="EventRow" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -23,3 +26,4 @@ margin_top = 293.0
 margin_right = 1024.0
 margin_bottom = 307.0
 text = "Hero, villain, or amount involved"
+[connection signal="gui_input" from="." to="." method="_on_EventRow_gui_input"]

@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Map/EventContainer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Map/LeftPanel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Map/RightPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Map/Map.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Map/MapContainer.gd" type="Script" id=5]
 
 [node name="MapContainer" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -38,33 +40,33 @@ text = "Time"
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 margin_top = 18.0
 margin_right = 1024.0
-margin_bottom = 492.0
+margin_bottom = 582.0
 size_flags_vertical = 3
 
 [node name="LeftPanel" parent="HBoxContainer2" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 28.0
-margin_bottom = 474.0
+margin_bottom = 564.0
 
 [node name="Map" parent="HBoxContainer2" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 32.0
-margin_right = 1020.0
-margin_bottom = 474.0
+margin_right = 992.0
+margin_bottom = 564.0
 size_flags_horizontal = 3
 
 [node name="RightPanel" parent="HBoxContainer2" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1024.0
+margin_left = 996.0
 margin_right = 1024.0
-margin_bottom = 474.0
+margin_bottom = 564.0
 
 [node name="EventContainer" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 496.0
+margin_top = 586.0
 margin_right = 1024.0
 margin_bottom = 600.0
