@@ -37,6 +37,9 @@ margin_right = 1024.0
 margin_bottom = 14.0
 text = "Time"
 
+[node name="ClockIncrement" type="Timer" parent="HBoxContainer/TimeLabel"]
+autostart = true
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 margin_top = 18.0
 margin_right = 1024.0
@@ -53,6 +56,7 @@ margin_bottom = 564.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 32.0
+margin_top = 0.0
 margin_right = 992.0
 margin_bottom = 564.0
 size_flags_horizontal = 3
@@ -70,3 +74,4 @@ anchor_bottom = 0.0
 margin_top = 586.0
 margin_right = 1024.0
 margin_bottom = 600.0
+[connection signal="timeout" from="HBoxContainer/TimeLabel/ClockIncrement" to="." method="_on_ClockIncrement_timeout"]

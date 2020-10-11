@@ -61,3 +61,4 @@ margin_right = 1024.0
 margin_bottom = 560.0
 size_flags_horizontal = 3
 [connection signal="pressed" from="TitleRow/StoreButton" to="." method="_on_StoreButton_pressed"]
+[connection signal="pressed" from="TitleRow/DoneButton" to="." method="_on_DoneButton_pressed"]

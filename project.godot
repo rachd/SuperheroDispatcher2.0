@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="SuperheroDispatcher2.0"
-run/main_scene="res://Map/MapContainer.tscn"
+run/main_scene="res://Store/Store.tscn"
 config/icon="res://icon.png"
 
 [autoload]

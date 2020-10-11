@@ -50,7 +50,6 @@ func _on_item_saved(item):
 	gameVariables.saved_items.append(item)
 	
 func _ready():
-	#self.connect("start_next_day", get_node("/root/Main"), "_on_close_Store")
 	var disabled_items = []
 	set_budget(gameVariables.budget)
 	if gameVariables.show_new_shop:
@@ -66,10 +65,10 @@ func _ready():
 				disabled_items.append(item_id)
 	self._add_item_cards(disabled_items)
 	gameVariables.show_new_shop = false
-	
-#func _on_Done_pressed():
-	#emit_signal("start_next_day", budget)
-
 
 func _on_MyItemsButton_pressed():
 	get_tree().change_scene("res://MyItems/MyItems.tscn")
+
+
+func _on_DoneButton_pressed():
+	get_tree().change_scene("res://Map/MapContainer.tscn")

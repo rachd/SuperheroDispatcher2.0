@@ -43,3 +43,7 @@ func _on_item_sold(itemId):
 
 func _on_StoreButton_pressed():
 	get_tree().change_scene("res://Store/Store.tscn")
+
+
+func _on_DoneButton_pressed():
+	get_tree().change_scene("res://Map/MapContainer.tscn")
