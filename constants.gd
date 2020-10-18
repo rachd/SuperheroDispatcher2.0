@@ -122,3 +122,5 @@ static func get_item_by_id(itemId):
 		if item.id == itemId:
 			return item
 			
+static func get_cell_size():
+	return 32

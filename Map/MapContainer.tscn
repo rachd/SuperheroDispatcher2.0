@@ -59,6 +59,7 @@ margin_left = 32.0
 margin_top = 0.0
 margin_right = 992.0
 margin_bottom = 564.0
+focus_mode = 2
 size_flags_horizontal = 3
 
 [node name="RightPanel" parent="HBoxContainer2" instance=ExtResource( 4 )]

@@ -34,4 +34,8 @@ func _on_ClockIncrement_timeout():
 		emit_signal("end_of_day")
 	else:
 		$HBoxContainer/TimeLabel.text = _formatTime()
+		
+func _on_Hero_clicked(hero):
+	$HBoxContainer2/RightPanel.display_hero(hero.id)
+	$HBoxContainer2/Map._on_Hero_clicked(hero)
 	
