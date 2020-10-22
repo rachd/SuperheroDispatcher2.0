@@ -9,6 +9,7 @@
 [node name="MapContainer" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -17,6 +18,7 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 1024.0
 margin_bottom = 14.0
+mouse_filter = 2
 
 [node name="DayLabel" type="Label" parent="HBoxContainer"]
 margin_right = 24.0
@@ -44,6 +46,7 @@ autostart = true
 margin_top = 18.0
 margin_right = 1024.0
 margin_bottom = 582.0
+mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="LeftPanel" parent="HBoxContainer2" instance=ExtResource( 2 )]
@@ -51,6 +54,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 28.0
 margin_bottom = 564.0
+mouse_filter = 2
 
 [node name="Map" parent="HBoxContainer2" instance=ExtResource( 3 )]
 anchor_right = 0.0
@@ -60,6 +64,7 @@ margin_top = 0.0
 margin_right = 992.0
 margin_bottom = 564.0
 focus_mode = 2
+mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="RightPanel" parent="HBoxContainer2" instance=ExtResource( 4 )]
@@ -68,6 +73,7 @@ anchor_bottom = 0.0
 margin_left = 996.0
 margin_right = 1024.0
 margin_bottom = 564.0
+mouse_filter = 2
 
 [node name="EventContainer" parent="." instance=ExtResource( 5 )]
 anchor_right = 0.0
@@ -75,4 +81,5 @@ anchor_bottom = 0.0
 margin_top = 586.0
 margin_right = 1024.0
 margin_bottom = 600.0
+mouse_filter = 2
 [connection signal="timeout" from="HBoxContainer/TimeLabel/ClockIncrement" to="." method="_on_ClockIncrement_timeout"]

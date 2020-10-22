@@ -14,8 +14,4 @@ func on_click():
 func _ready():
 	._ready()
 	self.connect("hero_selected", get_node("/root/MapContainer"), "_on_Hero_clicked")
-
-func _input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
-		on_click()
-		get_tree().set_input_as_handled()
+	$Label.text = str(id)
