@@ -36,89 +36,33 @@ func _get_tile_id_by_name(tile_name):
 	elif tile_name == "industrial":
 		return 3
 	elif tile_name == "road":
-		return 4
-		
-func _get_neighbors(tiles, x, y):
-	var road_id = _get_tile_id_by_name("road")
-	# [upper left, upper middle, upper right, left]
-	var neighbors = [road_id, road_id, road_id, road_id]
-	# row above
-	if x > 0:
-		if y > 0:
-			neighbors[0] = tiles[x - 1][y - 1]
-		neighbors[1] = tiles[x - 1][y]
-		if y + 1 < DISTRICT_WIDTH:
-			neighbors[2] = tiles[x - 1][y + 1]
-	# current row
-	if y > 0:
-		neighbors[3] = tiles[x][y - 1]
-	return neighbors
-		
-func _choose_next_tile(neighbors):
-	var road_id = _get_tile_id_by_name("road")
-	if neighbors[0] == road_id:
-		if neighbors[1] == road_id:
-			if neighbors[2] == road_id:
-				if neighbors[3] == road_id:
-					return _choose_random_building_tile()
-				else:
-					return _choose_random_tile()
-			else:
-				if neighbors[3] == road_id:
-					return _choose_random_building_tile()
-				else:
-					return _choose_random_tile() 
-		else:
-			if neighbors[2] == road_id:
-				if neighbors[3] == road_id:
-					return _choose_random_tile()
-				else:
-					return _choose_random_building_tile()
-			else:
-				if neighbors[3] == road_id:
-					return _choose_random_building_tile()
-				else:
-					return _choose_random_building_tile()
-	else:
-		if neighbors[1] == road_id:
-			if neighbors[2] == road_id:
-				if neighbors[3] == road_id:
-					return road_id
-				else:
-					return road_id
-			else:
-				if neighbors[3] == road_id:
-					return road_id
-				else:
-					return road_id
-		else:
-			if neighbors[2] == road_id:
-				if neighbors[3] == road_id:
-					return road_id
-				else:
-					return _choose_random_building_tile()
-			else:
-				if neighbors[3] == road_id:
-					return _choose_random_tile()
-				else:
-					return _choose_random_tile()		
+		return 4	
 								
 func _choose_random_tile():
 	return rng.randi_range(0, 4)
 					
 func _choose_random_building_tile():
 	return rng.randi_range(0, 3)
+	
+func _generate_road_indexes(max_size):
+	var current_row = -1
+	var road_rows = []
+	while current_row < max_size:
+		current_row += rng.randi_range(3, 5)
+		road_rows.append(current_row)
+	return road_rows
 
 func _generate_district():
 	Map.clear()
-	var tiles = []
+	var road_id = _get_tile_id_by_name("road")
+	var road_rows = _generate_road_indexes(DISTRICT_HEIGHT)
+	var road_cols = _generate_road_indexes(DISTRICT_WIDTH)
 	for x in range(DISTRICT_HEIGHT):
-		tiles.append([])
 		for y in range(DISTRICT_WIDTH):
-			var neighbors = _get_neighbors(tiles, x, y)
-			var tile_value = _choose_next_tile(neighbors)
-			tiles[x].append(tile_value)
-			Map.set_cellv(Vector2(x, y), tile_value)
+			if road_rows.has(x) or road_cols.has(y):
+				Map.set_cellv(Vector2(x, y), road_id)
+			else:
+				Map.set_cellv(Vector2(x, y), _choose_random_building_tile())
 
 func _ready():
 	rng.randomize()
