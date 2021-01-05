@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Map/MapContainer.gd" type="Script" id=1]
-[ext_resource path="res://Map/LeftPanel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Map/Map.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Map/RightPanel.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Map/EventContainer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://MapContainer/MapContainer.gd" type="Script" id=1]
+[ext_resource path="res://MapContainer/LeftPanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://MapContainer/Map/Map.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MapContainer/RightPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://MapContainer/EventContainer.tscn" type="PackedScene" id=5]
 
 [node name="MapContainer" type="VBoxContainer"]
 anchor_right = 1.0
@@ -64,7 +64,6 @@ margin_top = 0.0
 margin_right = 992.0
 margin_bottom = 564.0
 focus_mode = 2
-mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="RightPanel" parent="HBoxContainer2" instance=ExtResource( 4 )]
@@ -81,5 +80,4 @@ anchor_bottom = 0.0
 margin_top = 586.0
 margin_right = 1024.0
 margin_bottom = 600.0
-mouse_filter = 2
 [connection signal="timeout" from="HBoxContainer/TimeLabel/ClockIncrement" to="." method="_on_ClockIncrement_timeout"]
