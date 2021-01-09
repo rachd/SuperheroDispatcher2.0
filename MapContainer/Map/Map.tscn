@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://MapContainer/Map/Map.gd" type="Script" id=1]
 [ext_resource path="res://assets/roguelikeCity_magenta.png" type="Texture" id=2]
+[ext_resource path="res://MapContainer/Map/Camera.gd" type="Script" id=3]
 
 [sub_resource type="TileSet" id=1]
 0/name = "high_income"
@@ -103,4 +104,9 @@ __meta__ = {
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 508, 300 )
+current = true
+script = ExtResource( 3 )
 [connection signal="gui_input" from="." to="." method="_on_Map_gui_input"]
