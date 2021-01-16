@@ -6,10 +6,10 @@ onready var astar = AStar.new()
 onready var half_cell_size = cell_size / 2
 
 # The bounds of the rectangle containing all used tiles on this tilemap
-onready var used_rect = get_used_rect()
+var used_rect = null
 
 ## public functions
-func closest_road(start):
+func closest_road(start, end):
 	var start_tile = world_to_map(start)
 	var top_dist = 0
 	var left_dist = 0
@@ -57,9 +57,12 @@ func calculate_path(start, end):
 
 ## Private functions
 func _ready():
-	_add_traversable_tiles()
 	self.connect("map_clicked", get_node("/root/MapContainer/Map"), "_on_Map_clicked")
 
+func initialize():
+	used_rect = get_used_rect()
+	_add_traversable_tiles()
+	
 func _add_traversable_tiles():
 	var all_tiles = get_used_cells()
 	var traversable_tiles = []
@@ -99,8 +102,8 @@ func _get_id_for_point(point):
 func _is_road(tile):
 	var cell_type_id = get_cellv(tile)
 	return cell_type_id == tile_set.find_tile_by_name("road")
-		
-#func _unhandled_input(event):
-#	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
-#		var target_tile = world_to_map(event.position)
-#		emit_signal("map_clicked", map_to_world(target_tile))
+	
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+		var target_tile = world_to_map(event.position)
+		emit_signal("map_clicked", map_to_world(target_tile))

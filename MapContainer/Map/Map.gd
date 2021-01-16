@@ -4,27 +4,14 @@ var DISTRICT_WIDTH = 50
 var DISTRICT_HEIGHT = 50
 
 onready var Map = $TileMap
+var hero_scene = preload("res://MapContainer/Map/Hero.tscn")
 
 var rng = RandomNumberGenerator.new()
-var selected_hero = null
-
-func _calculate_new_path(start_position, target_position, hero):
-	var start_road = $TileMap.closest_road(start_position)
-	var end_road = $TileMap.closest_road(target_position)
-	var road_path = $TileMap.calculate_path(start_road, end_road)
-	hero.path = [start_road]
-	if road_path:
-		road_path.remove(0)
-		var path = [start_road] + road_path + [target_position]
-		hero.path = path
+var active_hero = null
 
 func _on_Hero_clicked(hero):
-	selected_hero = hero
-
-func _on_Map_clicked(position):
-	if selected_hero:
-		selected_hero.move_to_point(position)
-		selected_hero = null
+	if !active_hero:
+		active_hero = hero
 		
 func _get_tile_id_by_name(tile_name):
 	if tile_name == "high_income":
@@ -63,7 +50,28 @@ func _generate_district():
 				Map.set_cellv(Vector2(x, y), road_id)
 			else:
 				Map.set_cellv(Vector2(x, y), _choose_random_building_tile())
-
+	$TileMap.initialize()
+				
+func _generate_heros():
+	for hero_id in gameVariables.selected_heros:
+		var hero = hero_scene.instance()
+		hero.initialize(hero_id)
+		add_child(hero)
+		
+func _on_Map_clicked(target_position):
+	if active_hero:
+		var start_position = active_hero.position
+		var start_road = $TileMap.closest_road(start_position, target_position)
+		var end_road = $TileMap.closest_road(target_position, start_position)
+		var road_path = $TileMap.calculate_path(start_road, end_road)
+		active_hero.path = [start_road]
+		if road_path:
+			road_path.remove(0)
+			var path = [start_road] + road_path + [target_position]
+			active_hero.path = path
+			active_hero = null
+		
 func _ready():
 	rng.randomize()
 	_generate_district()
+	_generate_heros()

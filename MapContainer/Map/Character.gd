@@ -81,6 +81,7 @@ func _ready():
 	rng.randomize()
 	_set_initial_position()
 	$Label.text = str(current_health)
+	current_speed = speed
 	self.connect("find_path", get_node("/root/MapContainer/Map"), "_calculate_new_path")
 	
 func _on_AttackTimer_timeout():

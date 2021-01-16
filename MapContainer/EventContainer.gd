@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-var event_row_scene = preload("res://Map/EventRow.tscn")
+var event_row_scene = preload("res://MapContainer/EventRow.tscn")
 
 var entities = []
 var event_rows = []

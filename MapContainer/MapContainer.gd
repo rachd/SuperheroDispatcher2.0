@@ -6,9 +6,9 @@ func _display_event_entity(entity):
 	$HBoxContainer2/LeftPanel.display_event_entity(entity)
 
 func _ready():
-	$HBoxContainer/Budgetlabel.text = "$" + str(gameVariables.budget)
-	$HBoxContainer/DayLabel.text = "Day " + str(gameVariables.day)
-	$HBoxContainer/TimeLabel.text = _formatTime()
+	$CanvasLayer/PanelContainer/HBoxContainer/Budgetlabel.text = _formatMoney(gameVariables.budget)
+	$CanvasLayer/PanelContainer/HBoxContainer/DayLabel.text = "Day " + str(gameVariables.day)
+	$CanvasLayer/PanelContainer/HBoxContainer/TimeLabel.text = _formatTime()
 
 func _formatTime():
 	# convert to 12-hour time with am/pm
@@ -22,6 +22,15 @@ func _formatTime():
 	if hours >= 12:
 		amPm = "PM"
 	return hoursString + ":" + minutesString + " " + amPm
+	
+func _formatMoney(amount):
+	var money = ""
+	var temp_money = str(amount)
+	var money_length = len(temp_money)
+	while money_length > 3:
+		money = "," + temp_money.substr(money_length - 3, 3) + money
+		money_length -= 3
+	return "$" + temp_money.substr(0, money_length) + money
 
 func _on_ClockIncrement_timeout():
 	if time % 100 == 50:
@@ -33,9 +42,9 @@ func _on_ClockIncrement_timeout():
 	if time == 1700:
 		emit_signal("end_of_day")
 	else:
-		$HBoxContainer/TimeLabel.text = _formatTime()
-		
-func _on_Hero_clicked(hero):
-	$HBoxContainer2/RightPanel.display_hero(hero.id)
-	$HBoxContainer2/Map._on_Hero_clicked(hero)
+		$CanvasLayer/PanelContainer/HBoxContainer/TimeLabel.text = _formatTime()
+	
+func _on_Hero_info(hero):
+	$CanvasLayer4/PanelContainer/RightPanel.display_hero(hero.id)
+	$Map._on_Hero_clicked(hero)
 	

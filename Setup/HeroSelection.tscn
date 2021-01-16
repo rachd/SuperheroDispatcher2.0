@@ -74,3 +74,4 @@ margin_right = 1024.0
 margin_bottom = 240.0
 disabled = true
 text = "Start"
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]

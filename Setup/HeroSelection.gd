@@ -15,3 +15,7 @@ func _set_button_disabled():
 		$VBoxContainer/StartButton.disabled = false
 	else:
 		$VBoxContainer/StartButton.disabled = true
+
+func _on_StartButton_pressed():
+	gameVariables.selected_heros = selected_heros
+	get_tree().change_scene("res://MapContainer/MapContainer.tscn")
