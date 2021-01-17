@@ -11,24 +11,53 @@ var used_rect = null
 ## public functions
 func closest_road(start, end):
 	var start_tile = world_to_map(start)
-	var top_dist = 0
-	var left_dist = 0
-	var right_dist = 0
-	var bottom_dist = 0
+	var dist = 0
+	var direction_angle = start.direction_to(end).angle()
 	while true:
-		if _is_road(start_tile + Vector2(0, -1 * top_dist)):
-			return map_to_world(start_tile + Vector2(0, -1 * top_dist))
-		elif _is_road(start_tile + Vector2(-1 * left_dist, 0)):
-			return map_to_world(start_tile + Vector2(-1 * left_dist, 0))
-		elif _is_road(start_tile + Vector2(0, 1 * bottom_dist)):
-			return map_to_world(start_tile + Vector2(0, 1 * bottom_dist))
-		elif _is_road(start_tile + Vector2(1 * right_dist, 0)):
-			return map_to_world(start_tile + Vector2(1 * right_dist, 0))
-		else:
-			top_dist += 1
-			bottom_dist += 1
-			left_dist += 1
-			right_dist += 1
+		if direction_angle >= -(PI/4) and direction_angle <= (PI/4):
+			if _is_road(start_tile + Vector2(1 * dist, 0)):
+				return map_to_world(start_tile + Vector2(1 * dist, 0))
+			elif _is_road(start_tile + Vector2(0, 1 * dist)):
+				return map_to_world(start_tile + Vector2(0, 1 * dist))
+			elif _is_road(start_tile + Vector2(0, -1 * dist)):
+				return map_to_world(start_tile + Vector2(0, -1 * dist))
+			elif _is_road(start_tile + Vector2(-1 * dist, 0)):
+				return map_to_world(start_tile + Vector2(-1 * dist, 0))
+			else:
+				dist += 1
+		elif direction_angle >= (PI/4) and direction_angle <= ((3*PI)/4):
+			if _is_road(start_tile + Vector2(0, -1 * dist)):
+				return map_to_world(start_tile + Vector2(0, -1 * dist))
+			elif _is_road(start_tile + Vector2(-1 * dist, 0)):
+				return map_to_world(start_tile + Vector2(-1 * dist, 0))
+			elif _is_road(start_tile + Vector2(1 * dist, 0)):
+				return map_to_world(start_tile + Vector2(1 * dist, 0))
+			elif _is_road(start_tile + Vector2(0, 1 * dist)):
+				return map_to_world(start_tile + Vector2(0, 1 * dist))
+			else:
+				dist += 1
+		elif direction_angle >= ((3*PI)/4) or direction_angle <= ((-3*PI)/4):
+			if _is_road(start_tile + Vector2(-1 * dist, 0)):
+				return map_to_world(start_tile + Vector2(-1 * dist, 0))
+			elif _is_road(start_tile + Vector2(0, -1 * dist)):
+				return map_to_world(start_tile + Vector2(0, -1 * dist))
+			elif _is_road(start_tile + Vector2(0, 1 * dist)):
+				return map_to_world(start_tile + Vector2(0, 1 * dist))
+			elif _is_road(start_tile + Vector2(1 * dist, 0)):
+				return map_to_world(start_tile + Vector2(1 * dist, 0))
+			else:
+				dist += 1
+		elif direction_angle >= ((-3*PI)/4) and direction_angle <= -(PI/4):
+			if _is_road(start_tile + Vector2(0, 1 * dist)):
+				return map_to_world(start_tile + Vector2(0, 1 * dist))
+			elif _is_road(start_tile + Vector2(-1 * dist, 0)):
+				return map_to_world(start_tile + Vector2(-1 * dist, 0))
+			elif _is_road(start_tile + Vector2(1 * dist, 0)):
+				return map_to_world(start_tile + Vector2(1 * dist, 0))
+			elif _is_road(start_tile + Vector2(0, -1 * dist)):
+				return map_to_world(start_tile + Vector2(0, -1 * dist))
+			else:
+				dist += 1
 
 func calculate_path(start, end):
 	# Convert positions to cell coordinates
