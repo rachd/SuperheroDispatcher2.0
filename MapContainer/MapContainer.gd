@@ -15,13 +15,10 @@ func _formatTime():
 	var hours = time / 100
 	var hoursString = str(12 if hours % 12 == 0 else hours % 12)
 	var minutes = time % 100
-	var minutesString = str(minutes)
-	if minutes == 0:
-		minutesString = "00"
 	var amPm = "AM"
 	if hours >= 12:
 		amPm = "PM"
-	return hoursString + ":" + minutesString + " " + amPm
+	return "%s:%02d %s" % [hoursString, minutes, amPm]
 	
 func _formatMoney(amount):
 	var money = ""
@@ -37,7 +34,7 @@ func _on_ClockIncrement_timeout():
 		time -= 50
 		time += 100
 	else:
-		time += 10
+		time += 1
 	
 	if time == 1700:
 		emit_signal("end_of_day")
@@ -46,5 +43,4 @@ func _on_ClockIncrement_timeout():
 	
 func _on_Hero_info(hero):
 	$CanvasLayer4/PanelContainer/RightPanel.display_hero(hero.id)
-	$Map._on_Hero_clicked(hero)
 	

@@ -134,5 +134,5 @@ func _is_road(tile):
 	
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
-		var target_tile = world_to_map(event.position)
+		var target_tile = world_to_map(get_global_mouse_position())
 		emit_signal("map_clicked", map_to_world(target_tile))
