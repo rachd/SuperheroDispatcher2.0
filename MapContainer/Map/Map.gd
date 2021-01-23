@@ -1,5 +1,7 @@
 extends Control
 
+signal map_clicked
+
 var DISTRICT_WIDTH = 50
 var DISTRICT_HEIGHT = 50
 
@@ -59,6 +61,7 @@ func _generate_heros():
 		add_child(hero)
 		
 func _on_Map_clicked(target_position):
+	emit_signal("map_clicked")
 	if active_hero:
 		var start_position = active_hero.position
 		var start_road = $TileMap.closest_road(start_position, target_position)
@@ -75,3 +78,4 @@ func _ready():
 	rng.randomize()
 	_generate_district()
 	_generate_heros()
+	self.connect("map_clicked", get_node("/root/MapContainer"), "_on_Map_clicked")
