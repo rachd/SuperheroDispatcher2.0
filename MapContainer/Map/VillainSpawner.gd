@@ -40,7 +40,8 @@ func _instance_villain():
 		villain.position.x = spawn_area.position.x + rng.randi_range(0, spawn_area.size.x) * cell_size
 		villain.position.y = spawn_area.position.y + rng.randi_range(0, spawn_area.size.y) * cell_size
 		valid_position = _test_position(villain)
-	villain.spawn()
+	var villain_ids = constants.get_villain_stats().keys()
+	villain.initialize(rng.randi_range(1, villain_ids.size()))
 	
 func _test_position(villain):
 	var cell_coord = tilemap.world_to_map(villain.position)

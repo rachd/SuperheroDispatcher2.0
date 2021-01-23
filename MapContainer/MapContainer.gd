@@ -44,3 +44,6 @@ func _on_ClockIncrement_timeout():
 func _on_Hero_info(hero):
 	$CanvasLayer4/PanelContainer/RightPanel.display_hero(hero.id)
 	
+func _on_Villain_info(villain):
+	$CanvasLayer3/PanelContainer/LeftPanel.display_villain(villain.id)
+	

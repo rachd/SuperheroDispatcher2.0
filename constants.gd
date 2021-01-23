@@ -28,6 +28,20 @@ static func get_hero_stats():
 		}
 	}
 	
+static func get_villain_stats():
+	return {
+		1: {
+			"name": "Medusa",
+			"health": 40,
+			"attack": 10
+		},
+		2: {
+			"name": "Minotaur",
+			"health": 80,
+			"attack": 20
+		}
+	}
+	
 static func get_items():
 	return [
 	{
