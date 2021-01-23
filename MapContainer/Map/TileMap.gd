@@ -5,9 +5,6 @@ signal map_clicked(position)
 onready var astar = AStar.new()
 onready var half_cell_size = cell_size / 2
 
-# The bounds of the rectangle containing all used tiles on this tilemap
-var used_rect = null
-
 ## public functions
 func closest_road(start, end):
 	var start_tile = world_to_map(start)
@@ -89,7 +86,6 @@ func _ready():
 	self.connect("map_clicked", get_node("/root/MapContainer/Map"), "_on_Map_clicked")
 
 func initialize():
-	used_rect = get_used_rect()
 	_add_traversable_tiles()
 	
 func _add_traversable_tiles():
@@ -118,7 +114,7 @@ func _connect_traversable_tiles(tile_id, target):
 		
 
 func _get_id_for_point(point):
-
+	var used_rect = get_used_rect()
 	# Offset position of tile with the bounds of the tilemap
 	# This prevents ID's of less than 0, if points are behind (0, 0)
 	var x = point.x - used_rect.position.x

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://MapContainer/MapContainer.gd" type="Script" id=1]
-[ext_resource path="res://MapContainer/LeftPanel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://MapContainer/Map/Map.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MapContainer/Map/Map.tscn" type="PackedScene" id=2]
+[ext_resource path="res://MapContainer/LeftPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://MapContainer/RightPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://MapContainer/EventContainer.tscn" type="PackedScene" id=5]
 
@@ -58,7 +58,7 @@ text = "Time"
 [node name="ClockIncrement" type="Timer" parent="CanvasLayer/PanelContainer/HBoxContainer/TimeLabel"]
 autostart = true
 
-[node name="Map" parent="." instance=ExtResource( 3 )]
+[node name="Map" parent="." instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1024.0

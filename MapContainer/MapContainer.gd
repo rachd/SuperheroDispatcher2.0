@@ -48,3 +48,6 @@ func _on_Hero_info(hero):
 func _on_Map_clicked():
 	$CanvasLayer4/RightPanelContainer.visible = false
 	
+func _on_Villain_info(villain):
+	$CanvasLayer3/PanelContainer/LeftPanel.display_villain(villain.id)
+	

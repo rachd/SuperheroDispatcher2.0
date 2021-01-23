@@ -1,4 +1,5 @@
 extends VBoxContainer
 
-func display_event_entity(entity):
-	$TitleLabel.text = entity.title
+func display_villain(id):
+	var villain = constants.get_villain_stats()[id]
+	$Label.text = villain.name

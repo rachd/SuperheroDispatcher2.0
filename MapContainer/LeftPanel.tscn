@@ -2,7 +2,6 @@
 
 [ext_resource path="res://MapContainer/LeftPanel.gd" type="Script" id=1]
 
-
 [node name="LeftPanel" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,7 +10,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TitleLabel" type="Label" parent="."]
+[node name="Label" type="Label" parent="."]
 margin_right = 1024.0
 margin_bottom = 14.0
 text = "Title"
