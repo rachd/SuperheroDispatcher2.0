@@ -42,5 +42,9 @@ func _on_ClockIncrement_timeout():
 		$CanvasLayer/PanelContainer/HBoxContainer/TimeLabel.text = _formatTime()
 	
 func _on_Hero_info(hero):
-	$CanvasLayer4/PanelContainer/RightPanel.display_hero(hero.id)
+	$CanvasLayer4/RightPanelContainer/RightPanel.display_hero(hero.id)
+	$CanvasLayer4/RightPanelContainer.visible = true
+	
+func _on_Map_clicked():
+	$CanvasLayer4/RightPanelContainer.visible = false
 	

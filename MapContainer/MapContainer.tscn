@@ -67,7 +67,8 @@ size_flags_horizontal = 3
 
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer3"]
+[node name="LeftPanelContainer" type="PanelContainer" parent="CanvasLayer3"]
+visible = false
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_top = -14.0
@@ -79,7 +80,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeftPanel" parent="CanvasLayer3/PanelContainer" instance=ExtResource( 2 )]
+[node name="LeftPanel" parent="CanvasLayer3/LeftPanelContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 7.0
@@ -90,7 +91,8 @@ mouse_filter = 2
 
 [node name="CanvasLayer4" type="CanvasLayer" parent="."]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer4"]
+[node name="RightPanelContainer" type="PanelContainer" parent="CanvasLayer4"]
+visible = false
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -102,7 +104,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RightPanel" parent="CanvasLayer4/PanelContainer" instance=ExtResource( 4 )]
+[node name="RightPanel" parent="CanvasLayer4/RightPanelContainer" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 7.0
