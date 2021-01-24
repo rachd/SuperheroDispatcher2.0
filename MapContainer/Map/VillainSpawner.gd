@@ -26,7 +26,6 @@ func reset():
 func _on_Villain_dead(villain):
 	villain_count -= 1
 	spawned_villains.erase(villain)
-	villain.queue_free()
 	
 # private methods
 func _instance_villain():

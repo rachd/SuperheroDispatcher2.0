@@ -31,8 +31,8 @@ func _ready():
 	._ready()
 				
 func _die():
-	._die()
 	emit_signal("villain_dead", self)
+	._die()
 	
 func _on_AttackTimer_timeout():
 	if (target):

@@ -95,6 +95,7 @@ func _on_AttackTimer_timeout():
 func _die():
 	target.stop_attack()
 	$AttackTimer.stop()
+	self.queue_free()
 	
 func _handle_overlap(overlap):
 	pass
