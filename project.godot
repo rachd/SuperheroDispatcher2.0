@@ -24,10 +24,6 @@ config/icon="res://icon.png"
 constants="*res://constants.gd"
 gameVariables="*res://gameVariables.gd"
 
-[display]
-
-window/size/fullscreen=true
-
 [input]
 
 wheel_up={

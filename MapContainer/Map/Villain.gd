@@ -20,11 +20,9 @@ func set_villain_stats():
 	var villain_stats = constants.get_villain_stats()[id]
 	set_stats(villain_stats)
 
-func take_damage(damage):
-	current_health -= damage
-	$Label.text = str(current_health)
-	if (current_health <= 0):
-		_die()
+func start_hero_interaction(hero):
+	target = hero
+	hero.start_attack(self)
 
 func on_right_click():
 	emit_signal("villain_info", self)
@@ -33,7 +31,8 @@ func _ready():
 	._ready()
 				
 func _die():
-	emit_signal("villain_dead", self, target)
+	._die()
+	emit_signal("villain_dead", self)
 	
 func _on_AttackTimer_timeout():
 	if (target):

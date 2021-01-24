@@ -8,7 +8,6 @@ var health = 0
 var current_speed = 0
 var target_position: Vector2
 var target = null
-var attack_in_progress = false
 var current_health = health
 var target_type = null
 
@@ -22,7 +21,6 @@ signal find_path(start, end, target)
 
 # public methods
 func stop_attack():
-	attack_in_progress = false
 	$AttackTimer.stop()
 	target = null
 	
@@ -31,6 +29,8 @@ func set_stats(stats):
 	speed = stats.speed
 	attack = stats.attack
 	health = stats.health
+	current_health = health
+	$Label.text = str(current_health)
 			
 func pause(isPaused):
 	$AttackTimer.set_paused(isPaused)
@@ -67,7 +67,6 @@ func heal(amount):
 	
 func start_attack(_target):
 	target = _target
-	attack_in_progress = true
 	$AttackTimer.start()
 		
 # private methods
@@ -94,6 +93,7 @@ func _on_AttackTimer_timeout():
 	target.take_damage(attack)
 
 func _die():
+	target.stop_attack()
 	$AttackTimer.stop()
 	
 func _handle_overlap(overlap):

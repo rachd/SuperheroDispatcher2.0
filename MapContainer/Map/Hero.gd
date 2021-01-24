@@ -6,8 +6,8 @@ signal hero_info(hero)
 export var id : int
 
 func _handle_overlap(overlap):
-	if overlap.has_method("start_hero_interaction"):
-		overlap.start_hero_interaction(self)
+	if overlap.get_parent().has_method("start_hero_interaction"):
+		overlap.get_parent().start_hero_interaction(self)
 
 func on_click():
 	emit_signal("hero_selected", self)
@@ -23,5 +23,4 @@ func _ready():
 func initialize(_id):
 	id = _id
 	var hero_stats = constants.get_hero_stats()[id]
-	self.speed = hero_stats["speed"]
-	$Label.text = str(id)
+	set_stats(hero_stats)
