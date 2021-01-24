@@ -3,25 +3,25 @@ extends Node
 static func get_hero_stats():
 	return {
 		1: {
-			"name": "Zeus",
+			"title": "Zeus",
 			"health": 100,
 			"speed": 20,
 			"attack": 60
 		},
 		2: {
-			"name": "Hermes",
+			"title": "Hermes",
 			"health": 70,
 			"speed": 50,
 			"attack": 40
 		},
 		3: {
-			"name": "Artemis",
+			"title": "Artemis",
 			"health": 80,
 			"speed": 40,
 			"attack": 50
 		},
 		4: {
-			"name": "Poseidon",
+			"title": "Poseidon",
 			"health": 90,
 			"speed": 30,
 			"attack": 50
@@ -31,14 +31,16 @@ static func get_hero_stats():
 static func get_villain_stats():
 	return {
 		1: {
-			"name": "Medusa",
+			"title": "Medusa",
 			"health": 40,
-			"attack": 10
+			"attack": 10,
+			"speed": 20
 		},
 		2: {
-			"name": "Minotaur",
+			"title": "Minotaur",
 			"health": 80,
-			"attack": 20
+			"attack": 40,
+			"speed": 50
 		}
 	}
 	
@@ -138,3 +140,29 @@ static func get_item_by_id(itemId):
 			
 static func get_cell_size():
 	return 32
+	
+static func get_tile_id_by_name(tile_name):
+	match tile_name:
+		"high_income":
+			return 0
+		"low_income":
+			return 1
+		"office":
+			return 2
+		"industrial":
+			return 3
+		"road":
+			return 4
+
+static func get_tile_worth_by_id(tile_id):
+	match tile_id:
+		0:
+			return 40
+		1:
+			return 20
+		2:
+			return 30
+		3:
+			return 10
+		4:
+			return 0

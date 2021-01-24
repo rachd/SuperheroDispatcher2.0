@@ -13,7 +13,7 @@ func _on_CheckButton_toggled(button_pressed):
 		
 func _populate_data():
 	var hero_stats = constants.get_hero_stats()[heroId]
-	$Name.text = "Name " + str(hero_stats["name"])
+	$Name.text = "Name " + str(hero_stats["title"])
 	$Speed.text = "Speed " + str(hero_stats["speed"])
 	$Health.text = "Health " + str(hero_stats["health"])
 	$Attack.text = "Attack " + str(hero_stats["attack"])

@@ -14,18 +14,6 @@ var active_hero = null
 func _on_Hero_clicked(hero):
 	if !active_hero:
 		active_hero = hero
-		
-func _get_tile_id_by_name(tile_name):
-	if tile_name == "high_income":
-		return 0
-	elif tile_name == "low_income":
-		return 1
-	elif tile_name == "office":
-		return 2
-	elif tile_name == "industrial":
-		return 3
-	elif tile_name == "road":
-		return 4	
 								
 func _choose_random_tile():
 	return rng.randi_range(0, 4)
@@ -43,7 +31,7 @@ func _generate_road_indexes(max_size):
 
 func _generate_district():
 	Map.clear()
-	var road_id = _get_tile_id_by_name("road")
+	var road_id = constants.get_tile_id_by_name("road")
 	var road_rows = _generate_road_indexes(DISTRICT_HEIGHT)
 	var road_cols = _generate_road_indexes(DISTRICT_WIDTH)
 	for x in range(DISTRICT_HEIGHT):

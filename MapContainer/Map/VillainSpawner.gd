@@ -23,7 +23,7 @@ func reset():
 	$Timer.set_paused(true)
 
 	
-func on_villain_died(villain):
+func _on_Villain_dead(villain):
 	villain_count -= 1
 	spawned_villains.erase(villain)
 	

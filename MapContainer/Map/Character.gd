@@ -25,6 +25,12 @@ func stop_attack():
 	attack_in_progress = false
 	$AttackTimer.stop()
 	target = null
+	
+func set_stats(stats):
+	title = stats.title
+	speed = stats.speed
+	attack = stats.attack
+	health = stats.health
 			
 func pause(isPaused):
 	$AttackTimer.set_paused(isPaused)

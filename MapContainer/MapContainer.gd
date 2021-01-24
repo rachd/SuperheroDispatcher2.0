@@ -6,9 +6,12 @@ func _display_event_entity(entity):
 	$HBoxContainer2/LeftPanel.display_event_entity(entity)
 
 func _ready():
-	$CanvasLayer/PanelContainer/HBoxContainer/Budgetlabel.text = _formatMoney(gameVariables.budget)
+	_display_budget()
 	$CanvasLayer/PanelContainer/HBoxContainer/DayLabel.text = "Day " + str(gameVariables.day)
 	$CanvasLayer/PanelContainer/HBoxContainer/TimeLabel.text = _formatTime()
+	
+func _display_budget():
+	$CanvasLayer/PanelContainer/HBoxContainer/Budgetlabel.text = _formatMoney(gameVariables.budget)
 
 func _formatTime():
 	# convert to 12-hour time with am/pm
@@ -52,4 +55,12 @@ func _on_Map_clicked():
 func _on_Villain_info(villain):
 	$CanvasLayer3/LeftPanelContainer/LeftPanel.display_villain(villain.id)
 	$CanvasLayer3/LeftPanelContainer.visible = true
+	
+func _on_Villain_do_damage(attack, cell_type):
+	var damage = constants.get_tile_worth_by_id(cell_type) * attack
+	gameVariables.budget -= damage
+	_display_budget()
+	
+	
+		
 
