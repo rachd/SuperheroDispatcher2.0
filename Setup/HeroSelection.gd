@@ -19,3 +19,4 @@ func _set_button_disabled():
 func _on_StartButton_pressed():
 	gameVariables.selected_heros = selected_heros
 	get_tree().change_scene("res://MapContainer/MapContainer.tscn")
+

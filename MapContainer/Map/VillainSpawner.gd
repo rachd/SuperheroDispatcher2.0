@@ -37,8 +37,8 @@ func _instance_villain():
 	var spawn_area = tilemap.get_used_rect()
 	var cell_size = tilemap.cell_size[0]
 	while not valid_position:
-		villain.position.x = spawn_area.position.x + rng.randi_range(0, spawn_area.size.x) * cell_size
-		villain.position.y = spawn_area.position.y + rng.randi_range(0, spawn_area.size.y) * cell_size
+		villain.position.x = spawn_area.position.x + rng.randi_range(0, spawn_area.size.x - 1) * cell_size
+		villain.position.y = spawn_area.position.y + rng.randi_range(0, spawn_area.size.y - 1) * cell_size
 		valid_position = _test_position(villain)
 	var villain_ids = constants.get_villain_stats().keys()
 	villain.initialize(rng.randi_range(1, villain_ids.size()))

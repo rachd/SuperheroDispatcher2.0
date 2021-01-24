@@ -1,14 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://MapContainer/MapContainer.gd" type="Script" id=1]
-[ext_resource path="res://MapContainer/Map/Map.tscn" type="PackedScene" id=2]
-[ext_resource path="res://MapContainer/LeftPanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MapContainer/LeftPanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://MapContainer/Map/Map.tscn" type="PackedScene" id=3]
 [ext_resource path="res://MapContainer/RightPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://MapContainer/EventContainer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Menu/MainMenu.tscn" type="PackedScene" id=6]
 
 [node name="MapContainer" type="VBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 3.56763
+margin_top = 2.37842
+margin_right = 3.56763
+margin_bottom = 2.37842
 rect_scale = Vector2( 0.999217, 1 )
 mouse_filter = 2
 script = ExtResource( 1 )
@@ -58,7 +63,7 @@ text = "Time"
 [node name="ClockIncrement" type="Timer" parent="CanvasLayer/PanelContainer/HBoxContainer/TimeLabel"]
 autostart = true
 
-[node name="Map" parent="." instance=ExtResource( 2 )]
+[node name="Map" parent="." instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1024.0
@@ -80,7 +85,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeftPanel" parent="CanvasLayer3/LeftPanelContainer" instance=ExtResource( 3 )]
+[node name="LeftPanel" parent="CanvasLayer3/LeftPanelContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 7.0
@@ -131,4 +136,12 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 1017.0
 margin_bottom = 21.0
+
+[node name="MainMenu" parent="." instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 4.0
+margin_right = 1024.0
+margin_bottom = 4.0
+rect_scale = Vector2( 1, 1 )
 [connection signal="timeout" from="CanvasLayer/PanelContainer/HBoxContainer/TimeLabel/ClockIncrement" to="." method="_on_ClockIncrement_timeout"]
