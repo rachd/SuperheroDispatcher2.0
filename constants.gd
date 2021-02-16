@@ -12,7 +12,8 @@ static func get_hero_stats():
 			"title": "Hermes",
 			"health": 70,
 			"speed": 50,
-			"attack": 40
+			"attack": 40,
+			"can_fly": true
 		},
 		3: {
 			"title": "Artemis",
@@ -32,15 +33,17 @@ static func get_villain_stats():
 	return {
 		1: {
 			"title": "Medusa",
-			"health": 40,
+			"health": 400,
 			"attack": 10,
-			"speed": 20
+			"speed": 20,
+			"category": 1
 		},
 		2: {
 			"title": "Minotaur",
-			"health": 80,
+			"health": 800,
 			"attack": 40,
-			"speed": 50
+			"speed": 50,
+			"category": 2
 		}
 	}
 	
@@ -140,6 +143,9 @@ static func get_item_by_id(itemId):
 			
 static func get_cell_size():
 	return 32
+	
+static func get_level_thresholds():
+	return [100, 500, 1000, 2000]
 	
 static func get_tile_id_by_name(tile_name):
 	match tile_name:

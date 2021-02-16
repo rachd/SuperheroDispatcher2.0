@@ -32,3 +32,14 @@ margin_bottom = 50.0
 margin_top = 54.0
 margin_right = 1024.0
 margin_bottom = 68.0
+
+[node name="PowersLabel" type="Label" parent="."]
+margin_top = 72.0
+margin_right = 1024.0
+margin_bottom = 86.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_top = 90.0
+margin_right = 1024.0
+margin_bottom = 92.0
+percent_visible = false

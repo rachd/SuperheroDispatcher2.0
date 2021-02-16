@@ -51,16 +51,19 @@ func _generate_heros():
 func _on_Map_clicked(target_position):
 	emit_signal("map_clicked")
 	if active_hero:
-		var start_position = active_hero.position
-		var start_road = $TileMap.closest_road(start_position, target_position)
-		var end_road = $TileMap.closest_road(target_position, start_position)
-		var road_path = $TileMap.calculate_path(start_road, end_road)
-		active_hero.path = [start_road]
-		if road_path:
-			road_path.remove(0)
-			var path = [start_road] + road_path + [target_position]
-			active_hero.path = path
-			active_hero = null
+		if active_hero.can_fly:
+			active_hero.path = [target_position]
+		else:
+			var start_position = active_hero.position
+			var start_road = $TileMap.closest_road(start_position, target_position)
+			var end_road = $TileMap.closest_road(target_position, start_position)
+			var road_path = $TileMap.calculate_path(start_road, end_road)
+			active_hero.path = [start_road]
+			if road_path:
+				road_path.remove(0)
+				var path = [start_road] + road_path + [target_position]
+				active_hero.path = path
+		active_hero = null
 		
 func _ready():
 	rng.randomize()
