@@ -33,14 +33,14 @@ static func get_villain_stats():
 	return {
 		1: {
 			"title": "Medusa",
-			"health": 400,
+			"health": 40,
 			"attack": 10,
 			"speed": 20,
 			"category": 1
 		},
 		2: {
 			"title": "Minotaur",
-			"health": 800,
+			"health": 80,
 			"attack": 40,
 			"speed": 50,
 			"category": 2

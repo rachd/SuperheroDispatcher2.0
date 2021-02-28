@@ -7,9 +7,10 @@ var entity
 func _ready():
 	self.connect("show_event_entity", get_node("/root/MapContainer"), "_display_event_entity")
 	
-func initialize(_entity):
-	entity = _entity
+func initialize(_event):
+	entity = _event.entity
 	$EntityLabel.text = entity.title
+	$DescriptionLabel.text = _event.description
 
 func _on_EventRow_gui_input(event):
 	if event is InputEventMouseButton:

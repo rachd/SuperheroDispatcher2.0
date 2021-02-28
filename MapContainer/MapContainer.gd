@@ -1,9 +1,11 @@
 extends VBoxContainer
 
 var time = 900
+var level_up_event_scene = preload("res://Events/LevelUpEvent.tscn")
 
 func _display_event_entity(entity):
-	$HBoxContainer2/LeftPanel.display_event_entity(entity)
+	_on_Hero_info(entity)
+	#$HBoxContainer2/LeftPanel.display_event_entity(entity)
 
 func _ready():
 	_display_budget()
@@ -61,6 +63,10 @@ func _on_Villain_do_damage(attack, cell_type):
 	gameVariables.budget -= damage
 	_display_budget()
 	
+func _on_Hero_level_up(hero):
+	var level_up_event = level_up_event_scene.instance()
+	level_up_event.entity = hero
+	$CanvasLayer2/PanelContainer/EventContainer.add_event(level_up_event)
 	
 		
 

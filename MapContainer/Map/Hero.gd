@@ -6,6 +6,7 @@ signal hero_info(hero)
 
 export var id : int
 var xp_threshold : int
+var xp = 0
 
 func _handle_overlap(overlap):
 	if overlap.get_parent().has_method("start_hero_interaction"):
@@ -26,9 +27,8 @@ func _ready():
 func initialize(_id):
 	id = _id
 	var hero_stats = constants.get_hero_stats()[id]
-	hero_stats.xp = 0;
 	set_stats(hero_stats)
-	gameVariables.current_heros[id] = hero_stats
+	gameVariables.current_heros[id] = self
 
 func start_attack(_target):
 	.start_attack(_target)
@@ -43,6 +43,11 @@ func stop_attack():
 	$XPTimer.stop()
 	
 func _increase_xp(xp_added):
-	gameVariables.current_heros[id].xp += xp_added
-	if gameVariables.current_heros[id].xp > 100:
-		pass
+	var level_thresholds = constants.get_level_thresholds()
+	if (xp_threshold < level_thresholds.size()):
+		xp += xp_added
+		if (xp > level_thresholds[xp_threshold]):
+			xp -= level_thresholds[xp_threshold]
+			xp_threshold += 1
+			emit_signal("level_up", self)
+		

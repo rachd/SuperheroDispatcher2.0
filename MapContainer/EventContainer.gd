@@ -2,11 +2,9 @@ extends VBoxContainer
 
 var event_row_scene = preload("res://MapContainer/EventRow.tscn")
 
-var entities = []
 var event_rows = []
 
 func add_event(event):
-	entities.push_back(event)
 	var event_row = event_row_scene.instance()
 	event_row.initialize(event)
 	add_child(event_row)

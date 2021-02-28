@@ -43,3 +43,8 @@ margin_top = 90.0
 margin_right = 1024.0
 margin_bottom = 92.0
 percent_visible = false
+
+[node name="LevelLabel" type="Label" parent="."]
+margin_top = 96.0
+margin_right = 1024.0
+margin_bottom = 110.0
