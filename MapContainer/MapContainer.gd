@@ -4,7 +4,7 @@ var time = 900
 var level_up_event_scene = preload("res://Events/LevelUpEvent.tscn")
 
 func _display_event_entity(entity):
-	_on_Hero_info(entity)
+	pass
 	#$HBoxContainer2/LeftPanel.display_event_entity(entity)
 
 func _ready():
@@ -45,14 +45,6 @@ func _on_ClockIncrement_timeout():
 		emit_signal("end_of_day")
 	else:
 		$CanvasLayer/PanelContainer/HBoxContainer/TimeLabel.text = _formatTime()
-	
-func _on_Hero_info(hero):
-	$CanvasLayer4/RightPanelContainer/RightPanel.display_hero(hero.id)
-	$CanvasLayer4/RightPanelContainer.visible = true
-	
-func _on_Map_clicked():
-	$CanvasLayer4/RightPanelContainer.visible = false
-	$CanvasLayer3/LeftPanelContainer.visible = false
 	
 func _on_Villain_info(villain):
 	$CanvasLayer3/LeftPanelContainer/LeftPanel.display_villain(villain.id)
