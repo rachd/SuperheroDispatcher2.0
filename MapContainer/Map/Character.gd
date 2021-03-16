@@ -4,6 +4,7 @@ var title = ""
 var speed = 0
 var attack = 0
 var health = 0
+var icon = ""
 
 var current_speed = 0
 var target_position: Vector2
@@ -34,6 +35,7 @@ func set_stats(stats):
 	health = stats.health
 	current_health = health
 	can_fly = stats.can_fly if stats.has("can_fly") else false
+	icon = stats.icon
 	$Label.text = str(current_health)
 			
 func pause(isPaused):

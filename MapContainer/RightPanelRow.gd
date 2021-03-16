@@ -12,6 +12,7 @@ func display_hero(_id):
 	$HBoxContainer/VBoxContainer/PowersLabel.text = "Powers: %s" % "Flight" if hero.can_fly else ""
 	$HBoxContainer/VBoxContainer/ProgressBar.value = hero.xp
 	$LevelLabel.text = "Level %d" % hero.xp_threshold
+	$HBoxContainer/Icon.texture = load("res://assets/" + hero.icon + ".png")
 
 
 func _on_RefreshTimer_timeout():
