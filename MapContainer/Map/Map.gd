@@ -3,6 +3,8 @@ extends Control
 var DISTRICT_WIDTH = 50
 var DISTRICT_HEIGHT = 50
 
+signal map_clicked
+
 onready var Map = $TileMap
 var hero_scene = preload("res://MapContainer/Map/Hero.tscn")
 
@@ -61,8 +63,10 @@ func _on_Map_clicked(target_position):
 				var path = [start_road] + road_path + [target_position]
 				active_hero.path = path
 		active_hero = null
+		emit_signal("map_clicked")
 		
 func _ready():
 	rng.randomize()
 	_generate_district()
 	_generate_heros()
+	self.connect("map_clicked", get_node("/root/MapContainer"), "_on_Map_clicked")

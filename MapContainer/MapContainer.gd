@@ -53,6 +53,7 @@ func _on_Villain_info(villain):
 func _on_Villain_do_damage(attack, cell_type):
 	var damage = constants.get_tile_worth_by_id(cell_type) * attack
 	gameVariables.budget -= damage
+	gameVariables.update_property_damage(damage)
 	_display_budget()
 	
 func _on_Hero_level_up(hero):
@@ -60,5 +61,9 @@ func _on_Hero_level_up(hero):
 	level_up_event.entity = hero
 	$CanvasLayer2/PanelContainer/EventContainer.add_event(level_up_event)
 	
-		
-
+func _on_Hero_clicked(hero):
+	$CanvasLayer4/RightPanelContainer/RightPanel._on_Hero_clicked(hero)
+	$Map._on_Hero_clicked(hero)
+	
+func _on_Map_clicked():
+	$CanvasLayer4/RightPanelContainer/RightPanel._on_Map_clicked()

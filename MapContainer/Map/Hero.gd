@@ -21,7 +21,7 @@ func on_right_click():
 func _ready():
 	._ready()
 	self.connect("hero_info", get_node("/root/MapContainer"), "_on_Hero_info")
-	self.connect("hero_selected", get_node("/root/MapContainer/Map"), "_on_Hero_clicked")
+	self.connect("hero_selected", get_node("/root/MapContainer"), "_on_Hero_clicked")
 	self.connect("level_up", get_node("/root/MapContainer"), "_on_Hero_level_up")
 	
 func initialize(_id):
@@ -43,6 +43,7 @@ func stop_attack():
 	$XPTimer.stop()
 	
 func _increase_xp(xp_added):
+	gameVariables.update_total_xp(xp_added)
 	var level_thresholds = constants.get_level_thresholds()
 	if (xp_threshold < level_thresholds.size()):
 		xp += xp_added
@@ -50,4 +51,11 @@ func _increase_xp(xp_added):
 			xp -= level_thresholds[xp_threshold]
 			xp_threshold += 1
 			emit_signal("level_up", self)
+			
+func _on_AttackTimer_timeout():
+	._on_AttackTimer_timeout()
+	gameVariables.update_hero_damage_dealt(attack)
 		
+func take_damage(damage):
+	.take_damage(damage)
+	gameVariables.update_hero_damage_taken(damage)

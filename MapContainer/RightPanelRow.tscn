@@ -75,4 +75,5 @@ margin_bottom = 110.0
 [node name="RefreshTimer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+[connection signal="gui_input" from="." to="." method="_on_RightPanelRow_gui_input"]
 [connection signal="timeout" from="RefreshTimer" to="." method="_on_RefreshTimer_timeout"]

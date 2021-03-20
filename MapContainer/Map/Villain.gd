@@ -37,6 +37,7 @@ func _ready():
 				
 func _die():
 	emit_signal("villain_dead", self)
+	gameVariables.update_villains_defeated()
 	._die()
 	
 func _on_AttackTimer_timeout():
