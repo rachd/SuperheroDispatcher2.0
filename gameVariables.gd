@@ -1,10 +1,34 @@
-  extends Node
+extends Node
 
-var selected_heros = [1, 3, 4]
+var selected_heros = []
 var day = 1
 var budget = 1000000
 var saved_items = []
-var owned_item_ids = [0, 1, 2, 3]
-var assigned_items = {1: {"foot": 0}}
+var owned_item_ids = []
+var assigned_items = {}
 var show_new_shop = true
 var current_shop = {}
+var current_heros = {}
+
+#trackers
+var hero_damage_taken = 0
+var hero_damage_dealt = 0
+var property_damage = 0
+var total_xp = 0
+var villains_defeated = 0
+
+func update_hero_damage_taken(delta):
+	hero_damage_taken += delta
+
+func update_hero_damage_dealt(delta):
+	hero_damage_dealt += delta
+	
+func update_property_damage(delta):
+	property_damage += delta
+	
+func update_total_xp(delta):
+	total_xp += delta
+
+func update_villains_defeated():
+	villains_defeated += 1
+

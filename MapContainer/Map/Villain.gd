@@ -6,6 +6,7 @@ signal villain_selected(villain)
 signal villain_dead(villain)
 
 export var id : int
+var category = 0
 
 func initialize(_id):
 	id = _id
@@ -19,6 +20,10 @@ func initialize(_id):
 func set_villain_stats():
 	var villain_stats = constants.get_villain_stats()[id]
 	set_stats(villain_stats)
+	
+func set_stats(villain_stats):
+	.set_stats(villain_stats)
+	category = villain_stats.category
 
 func start_hero_interaction(hero):
 	target = hero
@@ -32,6 +37,7 @@ func _ready():
 				
 func _die():
 	emit_signal("villain_dead", self)
+	gameVariables.update_villains_defeated()
 	._die()
 	
 func _on_AttackTimer_timeout():

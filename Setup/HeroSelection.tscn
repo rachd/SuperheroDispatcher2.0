@@ -23,6 +23,9 @@ rect_scale = Vector2( 1, 1 )
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_right = 1024.0
@@ -43,7 +46,7 @@ margin_bottom = 216.0
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer"]
-margin_right = 316.0
+margin_right = 396.0
 margin_bottom = 180.0
 
 [node name="HeroSelectCard" parent="VBoxContainer/ScrollContainer/HBoxContainer" instance=ExtResource( 2 )]
@@ -76,6 +79,14 @@ margin_left = 240.0
 margin_right = 316.0
 margin_bottom = 180.0
 heroId = 4
+
+[node name="HeroSelectCard3" parent="VBoxContainer/ScrollContainer/HBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 320.0
+margin_right = 396.0
+margin_bottom = 180.0
+heroId = 5
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 margin_top = 220.0

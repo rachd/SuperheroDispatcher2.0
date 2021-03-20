@@ -6,25 +6,37 @@ static func get_hero_stats():
 			"title": "Zeus",
 			"health": 100,
 			"speed": 20,
-			"attack": 60
+			"attack": 60,
+			"icon": "icon"
 		},
 		2: {
 			"title": "Hermes",
 			"health": 70,
 			"speed": 50,
-			"attack": 40
+			"attack": 40,
+			"can_fly": true,
+			"icon": "icon"
 		},
 		3: {
 			"title": "Artemis",
 			"health": 80,
 			"speed": 40,
-			"attack": 50
+			"attack": 50,
+			"icon": "icon"
 		},
 		4: {
 			"title": "Poseidon",
 			"health": 90,
 			"speed": 30,
-			"attack": 50
+			"attack": 50,
+			"icon": "icon"
+		},
+		5: {
+			"title": "Martharon",
+			"health": 80,
+			"speed": 50,
+			"attack": 30,
+			"icon": "martha_ron"
 		}
 	}
 	
@@ -34,13 +46,17 @@ static func get_villain_stats():
 			"title": "Medusa",
 			"health": 40,
 			"attack": 10,
-			"speed": 20
+			"speed": 20,
+			"category": 1,
+			"icon": "icon"
 		},
 		2: {
 			"title": "Minotaur",
 			"health": 80,
 			"attack": 40,
-			"speed": 50
+			"speed": 50,
+			"category": 2,
+			"icon": "icon"
 		}
 	}
 	
@@ -140,6 +156,9 @@ static func get_item_by_id(itemId):
 			
 static func get_cell_size():
 	return 32
+	
+static func get_level_thresholds():
+	return [100, 500, 1000, 2000]
 	
 static func get_tile_id_by_name(tile_name):
 	match tile_name:

@@ -17,6 +17,7 @@ func _populate_data():
 	$Speed.text = "Speed " + str(hero_stats["speed"])
 	$Health.text = "Health " + str(hero_stats["health"])
 	$Attack.text = "Attack " + str(hero_stats["attack"])
+	$Icon.texture = load("res://assets/" + hero_stats["icon"] + ".png")
 
 func _ready():
 	_populate_data()

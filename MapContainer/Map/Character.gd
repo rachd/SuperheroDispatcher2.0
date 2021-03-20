@@ -4,6 +4,7 @@ var title = ""
 var speed = 0
 var attack = 0
 var health = 0
+var icon = ""
 
 var current_speed = 0
 var target_position: Vector2
@@ -15,6 +16,9 @@ var spawn_area = Rect2(0, 0, 300, 300)
 var cell_size = constants.get_cell_size()
 var path
 var rng = RandomNumberGenerator.new()
+
+#powers
+var can_fly = false
 
 
 signal find_path(start, end, target)
@@ -30,6 +34,8 @@ func set_stats(stats):
 	attack = stats.attack
 	health = stats.health
 	current_health = health
+	can_fly = stats.can_fly if stats.has("can_fly") else false
+	icon = stats.icon
 	$Label.text = str(current_health)
 			
 func pause(isPaused):
@@ -50,14 +56,6 @@ func take_damage(damage):
 	$Label.text = str(current_health)
 	if (current_health <= 0):
 		_die()
-		
-func move_to_point(target_position):
-	_on_move()
-	var relative_position = target_position - position
-	if relative_position.length() <= 8:
-		target_position = position
-	else:
-		emit_signal("find_path", position, target_position, self)
 		
 func heal(amount):
 	current_health += amount

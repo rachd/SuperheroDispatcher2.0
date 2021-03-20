@@ -1,9 +1,11 @@
 extends VBoxContainer
 
 var time = 900
+var level_up_event_scene = preload("res://Events/LevelUpEvent.tscn")
 
 func _display_event_entity(entity):
-	$HBoxContainer2/LeftPanel.display_event_entity(entity)
+	pass
+	#$HBoxContainer2/LeftPanel.display_event_entity(entity)
 
 func _ready():
 	_display_budget()
@@ -44,14 +46,6 @@ func _on_ClockIncrement_timeout():
 	else:
 		$CanvasLayer/PanelContainer/HBoxContainer/TimeLabel.text = _formatTime()
 	
-func _on_Hero_info(hero):
-	$CanvasLayer4/RightPanelContainer/RightPanel.display_hero(hero.id)
-	$CanvasLayer4/RightPanelContainer.visible = true
-	
-func _on_Map_clicked():
-	$CanvasLayer4/RightPanelContainer.visible = false
-	$CanvasLayer3/LeftPanelContainer.visible = false
-	
 func _on_Villain_info(villain):
 	$CanvasLayer3/LeftPanelContainer/LeftPanel.display_villain(villain.id)
 	$CanvasLayer3/LeftPanelContainer.visible = true
@@ -59,8 +53,17 @@ func _on_Villain_info(villain):
 func _on_Villain_do_damage(attack, cell_type):
 	var damage = constants.get_tile_worth_by_id(cell_type) * attack
 	gameVariables.budget -= damage
+	gameVariables.update_property_damage(damage)
 	_display_budget()
 	
+func _on_Hero_level_up(hero):
+	var level_up_event = level_up_event_scene.instance()
+	level_up_event.entity = hero
+	$CanvasLayer2/PanelContainer/EventContainer.add_event(level_up_event)
 	
-		
-
+func _on_Hero_clicked(hero):
+	$CanvasLayer4/RightPanelContainer/RightPanel._on_Hero_clicked(hero)
+	$Map._on_Hero_clicked(hero)
+	
+func _on_Map_clicked():
+	$CanvasLayer4/RightPanelContainer/RightPanel._on_Map_clicked()
