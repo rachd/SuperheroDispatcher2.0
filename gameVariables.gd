@@ -32,3 +32,9 @@ func update_total_xp(delta):
 func update_villains_defeated():
 	villains_defeated += 1
 
+#events
+var villain_events = [1, 2]
+func add_events_for_hero(hero_id):
+	match hero_id:
+		5:
+			villain_events.push_back(3)

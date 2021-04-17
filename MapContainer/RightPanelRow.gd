@@ -1,7 +1,12 @@
 extends VBoxContainer
 
+signal clicked_panel(hero, is_clicked)
+
 var id
 var is_active
+
+func _ready():
+	self.connect("clicked_panel", get_node("/root/MapContainer"), "_on_HeroPanel_clicked")
 
 func display_hero(_id):
 	id = _id
@@ -23,11 +28,13 @@ func set_active():
 	margin_left = 3
 	margin_right = 3
 	is_active = true
+	emit_signal("clicked_panel", id, true)
 
 func set_inactive():
 	margin_left = 0
 	margin_right = 0
 	is_active = false
+	emit_signal("clicked_panel", id, false)
 
 
 func _on_RightPanelRow_gui_input(event):

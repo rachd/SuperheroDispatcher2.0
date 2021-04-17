@@ -65,5 +65,12 @@ func _on_Hero_clicked(hero):
 	$CanvasLayer4/RightPanelContainer/RightPanel._on_Hero_clicked(hero)
 	$Map._on_Hero_clicked(hero)
 	
+func _on_HeroPanel_clicked(hero_id, is_selected):
+	if is_selected:
+		var hero = gameVariables.current_heros[hero_id]
+		$Map._on_Hero_clicked(hero)
+	else:
+		$Map._on_Hero_deactivate()
+	
 func _on_Map_clicked():
 	$CanvasLayer4/RightPanelContainer/RightPanel._on_Map_clicked()

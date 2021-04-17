@@ -7,6 +7,7 @@ signal map_clicked
 
 onready var Map = $TileMap
 var hero_scene = preload("res://MapContainer/Map/Hero.tscn")
+var hospital_scene = preload("res://MapContainer/Map/Building.tscn")
 
 var rng = RandomNumberGenerator.new()
 var active_hero = null
@@ -14,6 +15,9 @@ var active_hero = null
 func _on_Hero_clicked(hero):
 	if !active_hero:
 		active_hero = hero
+		
+func _on_Hero_deactivate():
+	active_hero = null
 								
 func _choose_random_tile():
 	return rng.randi_range(0, 4)
@@ -48,6 +52,10 @@ func _generate_heros():
 		hero.initialize(hero_id)
 		add_child(hero)
 		
+func _generate_buildings():
+	var hospital = hospital_scene.instance()
+	add_child(hospital)
+		
 func _on_Map_clicked(target_position):
 	if active_hero:
 		if active_hero.can_fly:
@@ -69,4 +77,5 @@ func _ready():
 	rng.randomize()
 	_generate_district()
 	_generate_heros()
+	_generate_buildings()
 	self.connect("map_clicked", get_node("/root/MapContainer"), "_on_Map_clicked")

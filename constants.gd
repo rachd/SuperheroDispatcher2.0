@@ -57,6 +57,14 @@ static func get_villain_stats():
 			"speed": 50,
 			"category": 2,
 			"icon": "icon"
+		},
+		3: {
+			"title": "The Bookworm",
+			"health": 150,
+			"attack": 50,
+			"speed": 60,
+			"category": 4,
+			"icon": "icon"
 		}
 	}
 	
